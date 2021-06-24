@@ -37,4 +37,13 @@ class NeuralNetwork {
 
         return copy;
     }
+    
+    mutate(r){
+        var child = this.copy();
+        for(var i = 0; i < this.layers.length; i++){
+            child.layers[i] = this.layers[i].mutate(r);
+            child.bias[i] = this.bias[i].mutate(r);
+        }
+        return child;
+    }
 }
